@@ -24,10 +24,7 @@ public interface ControlRepository extends JpaRepository<Control, Integer> {
 	@Query("select c from Control c where c.id=?1")
 	Control findcontrolId(Integer id);
 
-	//除了select都要用@Modifying
-	//	@Modifying
-	//用自增长id更新 修改查询只能使用void或int / Integer作为返回类型！ Modifying queries can only use void or int/Integer as return type!
-	//update 使用void
+	
 	/*
 	 * control更新
 	 */
