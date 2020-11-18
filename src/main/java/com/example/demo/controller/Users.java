@@ -27,7 +27,7 @@ import com.example.demo.service.UserService;
 public class Users {
 	@Autowired
 	UserService userService;
-	//在application定义的照片路径 imagesurl为所定义的路径名字 如 imagesurl=/img/
+	
 	@Value("${imagesurl}")
 	private String UPLOAD_DIR;
 	@Value("${imagesdb}")
@@ -67,14 +67,13 @@ public class Users {
 
 	@RequestMapping(value = "/usersadd", method = RequestMethod.POST)
 	public String userAdd(Model model,
-			//照片类型特殊MultipartFile
+			
 			@RequestParam(name = "photo", required = false) MultipartFile photo,
 			@RequestParam(name = "email", required = false) String email,
 			@RequestParam(name = "username", required = false) String username,
 			@RequestParam(name = "password", required = false) String password,
 			@RequestParam(name = "sex", required = false) String sex,
 			@RequestParam(name = "address", required = false) String address,
-			//创建object时 birth为Date类型，下面set时需要转换 user.setBirth(Date.valueOf(birth));
 			@RequestParam(name = "birth", required = false) String birth,
 			@RequestParam(name = "name1", required = false) String na,
 			@RequestParam(name = "name2", required = false) String me,
@@ -115,14 +114,13 @@ public class Users {
 			use.setUserName(na + " " + me + "(" + furi + " " + gana + ")");
 		}
 		if (!photo.isEmpty()) {
-			//从本地文件中取的照片的名字如11.jpg
+			
 			String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
-			//拼接=照片的名字+在application中定义的长路径名字 @Value("${imagesdb}") private String longpath;
 			Path path = Paths.get(longpath + fileName);
-			//存入DB只需要短路径的名字+照片名字（存入DB）
+			
 			use.setPhoto(UPLOAD_DIR + fileName);
 			try {
-				//读取本地路径存入项目中 station下面的img文件（存入本地项目）
+				
 				Files.copy(photo.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
 			} catch (IOException e) {
