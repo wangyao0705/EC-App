@@ -98,9 +98,9 @@ public class Controls {
 				controlList.remove(i);
 			}
 		}
-		//从service带参数id（登录时的controlname）接收对象为control对象
+		
 		Control control = controlLoginService.mControlName(id);
-		//与html页面传值 <td th:text="${control.controlName}">
+		
 		model.addAttribute("control", control);
 		model.addAttribute("controlList", controlList);
 		//html
@@ -111,11 +111,10 @@ public class Controls {
 	 * 削除
 	 */
 
-	//<input type="submit" value="削除" name="delete" >params用在from的action的判断 Alls为from的action的名字
 	@RequestMapping(value = "/Alls", method = RequestMethod.GET, params = "delete=削除")
 	public String deletes(Model model, @RequestParam(name = "radio-value", required = false) Integer id) {
 		if (id == 1) {
-			//			model.addAttribute("error", "権限なし");
+			
 			return "loginError";
 		} else {
 			controlService.deleteControlById(id);
@@ -258,7 +257,7 @@ public class Controls {
 	/*
 	 * managerのパスワード変更画面をスキップ
 	 */
-	//<a>都为GET
+	
 	@RequestMapping(value = "/pass", method = RequestMethod.GET)
 	public String pass(Model model, @RequestParam(name = "Mcontrolname") String mname) {
 		Control control = controlLoginService.mControlName(mname);
