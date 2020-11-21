@@ -18,7 +18,7 @@ import com.example.demo.service.RoleService;
 
 @Controller
 public class ControlLogin {
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/index")
 	public ModelAndView woc() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("login");
