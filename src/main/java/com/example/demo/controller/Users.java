@@ -36,7 +36,7 @@ public class Users {
 	/*
 	 * userログイン画面
 	 */
-	@RequestMapping(value = "/userhello")
+	@RequestMapping(value = "/userindex")
 	public String userlogin(Model model) {
 		return "userLogin";
 	}
